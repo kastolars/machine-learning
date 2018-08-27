@@ -1,5 +1,5 @@
 import pandas
-from sklearn.cross_validation import train_test_split as split
+from sklearn.model_selection import train_test_split as split
 from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import confusion_matrix as matrix
