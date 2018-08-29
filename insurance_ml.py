@@ -16,15 +16,16 @@ x[:, 5] = le.fit_transform(x[:, 5])
 ohe = OneHotEncoder(categorical_features=[5])
 x = ohe.fit_transform(x).toarray()
 
-xd = pandas.DataFrame(x, y) 
-
 from sklearn.model_selection import train_test_split as split
 
-xTrain, xTest, yTrain, yTest = split(x, y, test_size=0.2, random_state=0)
+xTrain, xTest, yTrain, yTest = split(x, y, test_size=0.22, random_state=0)
 
-ss = StandardScaler()
-xTrain = ss.fit_transform(xTrain)
-xTest = ss.transform(xTest)
+ssx = StandardScaler()
+ssy = StandardScaler()
+xTrain = ssx.fit_transform(xTrain)
+xTest = ssx.transform(xTest)
+yTrain = ssy.fit_transform(yTrain.reshape(-1, 1))
+yTest = ssy.fit_transform(yTest.reshape(-1, 1))
 
 
 from sklearn.linear_model import LinearRegression
